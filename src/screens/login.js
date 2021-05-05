@@ -37,7 +37,7 @@ class Login extends React.Component{
         }
         axios({
             method: "POST",
-            url: "https://digitool.azurewebsites.net/validate",
+            url: "https://digimastertool.herokuapp.com/validate",
             data: payload, 
         }).then(function(response) {
             this.setState({check:true})
