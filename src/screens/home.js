@@ -9,7 +9,7 @@ class Home extends React.Component {
         return(
             
             <div style={{display:'flex'}} >
-                <h1>WelCome Saket!!!</h1>
+                <h1>Welcome Saket!!!</h1>
             </div>
         )
     }

@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css'
-import {Link} from 'react-router-dom';
+
 import { MenuItem } from '@material-ui/core';
 
 class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-                    clickhome:false,
-                    clickaid:false,
-                    clickcl:false
+                    clickedTab :'home'
                   };
                 }
     render(){
@@ -20,20 +18,23 @@ class Nav extends React.Component {
         const clickedLinkStyle={
             fontSize:18,
             backgroundColor: "#82bcc4 ",
-            color:"#0f1d21"
+            color:"#0f1d21",
+            borderRadius:'20px'
         }
         return(
             <nav>
+                {/* <div style={{marginLeft:'20px',fontSize:28,fontWeight:700}}>DigiTool</div> */}
                 <ul className="nav-links">
-                <Link to="/home" style={{ textDecoration: 'none' }}>
-                    <MenuItem style={this.state.clickhome ? clickedLinkStyle : linkStyle } onClick={() =>{this.setState({clickhome:true,clickaid:false , clickcl:false})}}>Home</MenuItem>
-                    </Link>
-                    <Link to="/aid" style={{ textDecoration: 'none' }}>
-                    <MenuItem style={this.state.clickaid ? clickedLinkStyle : linkStyle} onClick={() =>{this.setState({clickhome:false,clickaid:true , clickcl:false})}}>Aid</MenuItem>
-                    </Link>
-                    <Link to="/cl" style={{ textDecoration: 'none' }}>
-                    <MenuItem style={this.state.clickcl ? clickedLinkStyle : linkStyle} onClick={() =>{this.setState({clickhome:false,clickaid:false , clickcl:true})}}>CL</MenuItem>
-                    </Link>
+                    
+                <div to="/home" style={{ textDecoration: 'none' }}>
+                    <MenuItem style={this.state.clickedTab=='home' ? clickedLinkStyle : linkStyle } onClick={() =>{this.setState({clickedTab:'home'});this.props.handleActiveTab("home");}}>Home</MenuItem>
+                    </div>
+                    <div to="/aid" style={{ textDecoration: 'none' }}>
+                    <MenuItem style={this.state.clickedTab=='aid'  ? clickedLinkStyle : linkStyle} onClick={() =>{this.setState({clickedTab:'aid'});this.props.handleActiveTab("aid");}}>Aid</MenuItem>
+                    </div>
+                    <div to="/cl" style={{ textDecoration: 'none' }}>
+                    <MenuItem style={this.state.clickedTab=='cl'  ? clickedLinkStyle : linkStyle} onClick={() =>{this.setState({clickedTab:'cl'});this.props.handleActiveTab("cl");}}>CL</MenuItem>
+                    </div>
                     
                 </ul>
             </nav>

@@ -12,7 +12,8 @@ class Login extends React.Component{
         this.state = {
                     username : "",
                     password: "",
-                    check: false
+                    check: false,
+                    loading : false
                   };
         this.handleUsername = this.handleUsername.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -30,31 +31,31 @@ class Login extends React.Component{
       
       handleSubmit (evt) {
         evt.preventDefault();
-        console.log("SignIn");
         const payload = {
                     username : this.state.username,
                     password : this.state.password,
         }
+        this.setState({loading:true})
         axios({
             method: "POST",
             url: "https://digimastertool.herokuapp.com/validate",
             data: payload, 
         }).then(function(response) {
-            this.setState({check:true})
-            this.routingFunction();
+            
+            this.props.handleLogin(true);
+            
+           
         }.bind(this)).catch(
             function(error) {
-                this.setState({check:false})
+                
                 alert("Invalid Username and Password")
+                this.setState({loading:false})
+                this.props.handleLogin(false);
             }.bind(this)
         );
     }
    
-        routingFunction = () => {
-            this.props.history.push({
-                pathname: `/home`,
-            });
-            }
+        
     
     render(){
         
@@ -73,18 +74,21 @@ class Login extends React.Component{
     };
     const cardStyle={
       background:'white',
-      height: 350,
-      width:500,
+      height: '40%',
+      width:'40%',
+      minHeight : "340px",
+      minWidth : '570px'
       
     }
     const cardTitleStyle={
-      paddingLeft:'37%',
       fontSize:30,
       fontWeight: 'bold',
       color:'#0f1d21',
       backgroundColor:'#4b6e73',
       paddingTop:8,
       paddingBottom:8,
+      justifyContent:'center',
+      display:'flex'
     }
     const cardSubtitleStyle={
       fontSize:22,
@@ -96,31 +100,37 @@ class Login extends React.Component{
     
 
     return(
-      <div style={sectionStyle}>
+      <div>
+        {this.state.loading ? <div className="loader center">
+      <i className="fa fa-cog fa-spin" />
+    </div> : <div style={sectionStyle}>
             <Card style={cardStyle}>
             <Card.Body>
               <Card.Title style={cardTitleStyle}> DigiTool </Card.Title>
               <Card.Subtitle style={cardSubtitleStyle}> Sign In </Card.Subtitle>
               
-              <input style={{ height:35,width:340,marginLeft:60,marginTop:40,fontSize:17}} type="text" name="title" placeholder="Username" 
+              <input style={{ height:35,width:'70%',marginLeft:60,marginTop:40,fontSize:17}} type="text" name="title" placeholder="Username" 
               value={this.state.username}
               onChange={this.handleUsername}
               />
-              <input style={{ height:35,width:340,marginLeft:60,marginTop:20,fontSize:17}} type="text" name="password" placeholder="Password"  
+              <input style={{ height:35,width:'70%',marginLeft:60,marginTop:20,fontSize:17}} type="text" name="password" placeholder="Password"  
               value={this.state.password}
               onChange={this.handlePassword}
               />
-              <div style ={{marginTop:40,marginLeft:360}}>
+              <div style ={{marginTop:30,marginLeft:'70%'}}>
               <Button style={{color:'#0f1d21',backgroundColor:'#4b6e73',height:40,width:100,fontSize:17}} onClick={this.handleSubmit}>Sign In</Button>
               </div>
               
               </Card.Body>
             </Card>
-      
-      
+      </div>}
+
       </div>
+      
+
+    
     )
     }
 }
 
-export default withRouter(Login);
+export default Login;

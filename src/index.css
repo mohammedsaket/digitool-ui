@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.card{
+  position:absolute;
+  height: 40%;
+  width: 40%;
+  background-color: blue;
+  z-index: 9999;
+}
+
+.card .card-title{
+  background-color: brown;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.center {
+  margin: auto;
+  max-width: 400px;
+  min-width: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+div.loader {
+  font-size: 100px;
+}
+
+.loaded {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

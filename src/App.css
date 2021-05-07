@@ -20,6 +20,7 @@ nav{
   min-height: 8vh;
   background: #0f1d21;
   color:#82bcc4;
+  justify-content: center;
   
 }
 
@@ -27,7 +28,6 @@ nav{
   width: 20%;
   display: flex;
   justify-content: space-between;
-  margin-left: 100px;
   align-items: center;
   list-style: none;
   font-size: 20px;
