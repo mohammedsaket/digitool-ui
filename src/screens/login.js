@@ -43,7 +43,8 @@ class Login extends React.Component{
         }).then(function(response) {
             
             this.props.handleLogin(true);
-            
+            localStorage.setItem('loginVal', 'Done');
+            sessionStorage.setItem('loginVal', 'Done');
            
         }.bind(this)).catch(
             function(error) {
