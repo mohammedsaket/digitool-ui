@@ -99,6 +99,16 @@ class Aid extends React.Component {
     
                 return row[filter.id] >= min && row[filter.id] <= max;
               },
+              Filter: ({filter, onChange}) => (
+                <input
+                  onChange={event => onChange(event.target.value)}
+                  value={filter ? filter.value : ''}
+                  placeholder = 'Min,Max'
+                  style={{
+                    width: '100%',
+                  }}
+                />
+              )
              
             
             },{  
@@ -113,6 +123,16 @@ class Aid extends React.Component {
         
                     return row[filter.id] >= min && row[filter.id] <= max;
                   }, 
+              Filter: ({filter, onChange}) => (
+                <input
+                  onChange={event => onChange(event.target.value)}
+                  value={filter ? filter.value : ''}
+                  placeholder = 'Min,Max'
+                  style={{
+                    width: '100%',
+                  }}
+                />
+              )
                 },{  
                     Header: 'DR',  
                     accessor: 'DR'  , 
@@ -124,7 +144,17 @@ class Aid extends React.Component {
                         var max = parseInt(data[1]) ? parseInt(data[1]) : 100
             
                         return row[filter.id] >= min && row[filter.id] <= max;
-                      }, 
+                      },
+                      Filter: ({filter, onChange}) => (
+                        <input
+                          onChange={event => onChange(event.target.value)}
+                          value={filter ? filter.value : ''}
+                          placeholder = 'Min,Max'
+                          style={{
+                            width: '100%',
+                          }}
+                        />
+                      )
                     },{  
                         Header: 'Cost Price',  
                         accessor: 'Cost Price'  , 
@@ -136,7 +166,17 @@ class Aid extends React.Component {
                             var max = parseInt(data[1]) ? parseInt(data[1])  : 1000000000;
                             
                             return row[filter.id] >= min && row[filter.id] <= max;
-                          }, 
+                          },
+                          Filter: ({filter, onChange}) => (
+                            <input
+                              onChange={event => onChange(event.target.value)}
+                              value={filter ? filter.value : ''}
+                              placeholder = 'Min,Max'
+                              style={{
+                                width: '100%',
+                              }}
+                            />
+                          )
                         },{  
                         Header: 'Follow',  
                         accessor: 'Follow'  
