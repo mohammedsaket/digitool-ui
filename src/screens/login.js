@@ -78,7 +78,7 @@ class Login extends React.Component{
       height: '40%',
       width:'40%',
       minHeight : "340px",
-      minWidth : '570px'
+      minWidth : '350px'
       
     }
     const cardTitleStyle={
