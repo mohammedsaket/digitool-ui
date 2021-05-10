@@ -12,7 +12,8 @@ class App extends React.Component {
     this.state = {
                 login : false,
                 activeTab : 'home',
-                listData : []
+                listData : [],
+                CustomerData:[]
               };
   }
 
@@ -48,6 +49,28 @@ class App extends React.Component {
   );
   }
 
+  updateCustomerData = () =>{
+    axios({
+      method: "GET",
+      url: "https://digimastertool.herokuapp.com/customerList",
+     
+  }).then(function(response) {
+
+     let l = []
+     for (var i=0; i < (response.data).length ; i++){
+         l.push(JSON.parse(response.data[i]))
+     }
+     this.setState({CustomerData:l})
+      
+     
+  }.bind(this)).catch(
+      function(error) {
+          
+          alert("Invalid Customer Data Format")
+          
+      }.bind(this)
+  );
+  }
   
   render(){
   
@@ -56,7 +79,10 @@ class App extends React.Component {
       {(this.state.login || sessionStorage.getItem('loginVal') == "Done") ? 
       <div>
         <Nav handleActiveTab={this.handleActiveTab}></Nav> 
-      {this.state.activeTab=='home'? <Home></Home> : (this.state.activeTab=='aid'? <Aid updatelistData = {this.updatelistData} listData = {this.state.listData}></Aid> : <CL></CL>)}
+      {this.state.activeTab=='home'? 
+      <Home></Home> : (this.state.activeTab=='aid'? 
+      <Aid updatelistData = {this.updatelistData} listData = {this.state.listData}></Aid> : 
+      <CL updateCustomerData = {this.updateCustomerData} CustomerData = {this.state.CustomerData}></CL>)}
 
       </div>
 
