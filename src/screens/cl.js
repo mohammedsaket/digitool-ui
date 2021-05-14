@@ -1,12 +1,24 @@
 import React from 'react';
 import {Table} from "react-bootstrap"
+import AddClientModal from './AddClientModal'
+import UpdateClientModal from './UpdateClientModal'
+import DeleteClientModal from './DeleteClientModal'
+
+
 class CL extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
                     search : '',
-                    
+                    addClientShow : false,
+                    updateClientShow : false,
+                    deleteClientShow : false,
+                    addOrderShow : false,
+                    updateOrderShow : false,
+                    selectedClient: '',
+                    deleteClient:''
                   };
+
       }
 
       componentDidMount () {
@@ -17,18 +29,62 @@ class CL extends React.Component {
         this.setState({search: event.target.value});
       }
 
+      showaddClientModal = () => {
+        this.setState({ addClientShow: true });
+      };
+    
+      hideaddClientModal = (val) => {
+        this.setState({ addClientShow: false });
+        if (val){
+            window.location.reload(true);
+        }
+      };
+
+      showupdateClientModal = (val) => {
+        this.setState({ updateClientShow: true ,selectedClient : val});
+      };
+    
+      hideupdateClientModal = (val) => {
+        this.setState({ updateClientShow: false });
+        if (val){
+            window.location.reload(true);
+        }
+      };
+
+      showdeleteClientModal = (val) => {
+        this.setState({ deleteClientShow: true,deleteClient : val});
+      };
+    
+      hidedeleteClientModal = (val) => {
+        this.setState({ deleteClientShow: false });
+        if (val){
+            window.location.reload(true);
+        }
+      };
+
+      showaddOrderModal = () => {
+        this.setState({ addOrderShow: true });
+      };
+    
+      hideaddOrderModal = () => {
+        this.setState({ addOrderShow: false });
+      };
+
+      showupdateOrderModal = () => {
+        this.setState({ updateOrderShow: true });
+      };
+    
+      hideupdateOrderModal = () => {
+        this.setState({ updateOrderShow: false });
+      };
+
       
       
     render(){
+    const sn = 1;
        const listDiv = this.props.CustomerData.map((val)=>
-
-       <div className = "listDiv">
-           <div className = "snoDiv">
-               <div className ="sno">
-               {val.ID} .
-               </div>
-
-           </div>
+       <div key = {val.ID} className = "listDiv">
+           
            <div className = "titleDiv">
            <div className ="title">
                {val.Name}
@@ -49,13 +105,13 @@ class CL extends React.Component {
                
            </div>
            <div className = "iconDiv">
-           <div className = "loadericon">
-           <i class="fas fa-user-edit"></i>
+           <div className = "loadericon" onClick={() =>{this.showupdateClientModal(val)}}>
+           <i className="fas fa-user-edit"> </i>
            </div>
 
-           <div className = "loadericon">
+           <div className = "loadericon" onClick={()=>{this.showdeleteClientModal(val.ID)}}>
            {/* <i class="fas fa-trash-alt"></i> */}
-           <i class="fas fa-user-minus"></i>
+           <i className="fas fa-user-minus"></i>
            </div>
 
            </div>
@@ -77,7 +133,7 @@ class CL extends React.Component {
 
                  <button className = "clAddClientButton" 
                  
-                 onClick={this.handleAddClient}>Add Client
+                 onClick={this.showaddClientModal}>Add Client
                  </button>
 
 
@@ -90,6 +146,12 @@ class CL extends React.Component {
                 }}>
                     {listDiv}
                 </div>
+                <AddClientModal data = {this.props.CustomerData} show={this.state.addClientShow} handleClose={this.hideaddClientModal}></AddClientModal>
+                {this.state.updateClientShow &&<UpdateClientModal dataItem = {this.state.selectedClient} data = {this.props.CustomerData} show={this.state.updateClientShow} handleClose={this.hideupdateClientModal}></UpdateClientModal>}
+                {this.state.deleteClientShow && <DeleteClientModal id={this.state.deleteClient} show={this.state.deleteClientShow} handleClose={this.hidedeleteClientModal}></DeleteClientModal>}
+               
+
+
             </div>
         )
     }

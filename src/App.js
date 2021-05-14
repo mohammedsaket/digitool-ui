@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
                 login : false,
-                activeTab : 'home',
+                activeTab : sessionStorage.getItem('activeTab') ? sessionStorage.getItem('activeTab')  : 'home',
                 listData : [],
                 CustomerData:[]
               };
