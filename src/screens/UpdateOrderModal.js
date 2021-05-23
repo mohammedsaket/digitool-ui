@@ -2,40 +2,44 @@ import React from 'react';
 import '../App.css'
 import axios from 'axios';
 
-class AddOrderModal extends React.Component {
+class UpdateOrderModal extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-                    Niche : '',
-                    Website : '',
-                    OrderDate : '',
-                    EndDate : '',
-                    PaymentMethod:'',
-                    Amount : ''
+            Niche : this.props.data.Niche,
+            Website : this.props.data.Website,
+            OrderDate : this.props.data.StartDate,
+            EndDate : this.props.data.EndDate,
+            PaymentMethod:this.props.data.PaymentMethod,
+            Amount : this.props.data.Amount,
+            Status: this.props.data.OrderStatus
                   };
       }
 
 
       handleSubmit = ()=> {
-        var dataList = this.props.data;
+        var l = this.props.data.ID;
+        var list1 = this.props.dataList.filter(function (val) {
+            return val.ID != l;
+          });
         const payload = { 
-                    "ID":this.props.data.length +1,
+                    "ID":this.props.data.ID,
                     "Niche":this.state.Niche,
                     "Website":this.state.Website,
                     "StartDate":this.state.OrderDate,
                     "EndDate":this.state.EndDate,
                     "PaymentMethod":this.state.PaymentMethod,
-                    "Amount" :this.state.Amount
-            }
-    dataList.push(payload)
-
+                    "Amount" :this.state.Amount,
+                    "OrderStatus":this.state.Status
+    }
+    list1.push(payload)
     const payload2 = { 
         "ID":this.props.id,
-        "Orders":dataList
+        "Orders":list1
         }
-
-    console.log("Saket",payload2,dataList);
+    console.log(payload2)
+    
         axios({
             method: "POST",
             url: "https://digimastertool.herokuapp.com/postOrderList",
@@ -53,6 +57,10 @@ class AddOrderModal extends React.Component {
         );
     }
 
+    handleChange(event) {
+        this.setState({Status: event.target.value});
+      }
+
 
     
     render(){
@@ -63,10 +71,10 @@ class AddOrderModal extends React.Component {
             <div className={showHideClassName} >
                 <section className="modal-main">
                 <div className ="modalTitleDiv">
-                    <div className = "modalTitle">Add Order</div>
+                    <div className = "modalTitle">Update Client</div>
                 </div>
 
-                <div style={{height:'80%',overflow:'auto',paddingTop:'5%'}}>
+                <div style={{height:'80%',overflow:'auto'}}>
 
                     <div style={{display:'flex',height:'15%'}}>
                         <div className ="modalInputName">Niche</div>
@@ -99,6 +107,22 @@ class AddOrderModal extends React.Component {
                         value={this.state.EndDate}
                         onChange={(event)=>{this.setState({EndDate: event.target.value})}}></input></div>   
                     </div>
+
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Status</div>
+                        
+                        <div className ="modalInputdiv">
+                             {/* <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
+                        value={this.state.Status}
+                        onChange={(event)=>{this.setState({Status: event.target.value})}}></input> */}
+                        <select style={{fontSize:'16px',padding:'5px',width:'64%'}} value={this.state.Status} onChange={(event)=>{this.setState({Status:event.target.value})}}>
+                            <option value="To Do">To Do</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Done">Done</option>
+                        </select>
+                        </div>   
+                    </div>
+                    
                     <div style={{display:'flex',height:'15%'}}>
                         <div className ="modalInputName">Payment Method</div>
                         <div className ="modalInputdiv">
@@ -118,13 +142,9 @@ class AddOrderModal extends React.Component {
                 </div>
 
                 <div className = "modalFooterDiv">
-                {(this.state.name != '' && this.state.email != '' && this.state.phone_number != '' && this.state.source != '' && this.state.added_by != '')? <button className = "clAddOrderButton"  type="button" onClick={()=>{this.handleSubmit()}}>
-                    Add
-                    </button> :
-                    <button className = "clAddOrderButton"  type="button" onClick={()=>{}}>
-                    Add
-                    </button>}
-                
+                <button className = "clAddOrderButton"  type="button" onClick={()=>{this.handleSubmit()}}>
+                    Update
+                    </button>
                 <button className = "clAddOrderButton" type="button" onClick={()=>{this.props.handleClose()}}>
                     Close
                     </button>
@@ -136,4 +156,4 @@ class AddOrderModal extends React.Component {
     }
 }
 
-export default AddOrderModal;
+export default UpdateOrderModal;

@@ -65,8 +65,8 @@ class CL extends React.Component {
         }
       };
 
-      showaddOrderModal = () => {
-        this.setState({ addOrderShow: true });
+      showaddOrderModal = (val) => {
+        this.setState({ addOrderShow: true ,showOrderID : val});
       };
     
       hideaddOrderModal = () => {
@@ -99,7 +99,7 @@ class CL extends React.Component {
            
            <button className = "clAddOrderButton" 
                  
-                 onClick={()=>{this.showaddOrderModal()}}>Add Order
+                 onClick={()=>{this.showaddOrderModal(val.ID)}}>Add Order
                  </button>
             <button className = "clShowOrderButton" 
                  
@@ -153,7 +153,7 @@ class CL extends React.Component {
                 {this.state.updateClientShow &&<UpdateClientModal dataItem = {this.state.selectedClient} data = {this.props.CustomerData} show={this.state.updateClientShow} handleClose={this.hideupdateClientModal}></UpdateClientModal>}
                 {this.state.deleteClientShow && <DeleteClientModal id={this.state.deleteClient} show={this.state.deleteClientShow} handleClose={this.hidedeleteClientModal}></DeleteClientModal>}
                 {this.state.showOrderShow && <ShowOrderModal id= {this.state.showOrderID} show={this.state.showOrderShow}  data = {this.props.CustomerData.find(x => x.ID === this.state.showOrderID).Orders} handleClose={this.hideshowOrderModal}></ShowOrderModal>}
-                {this.state.addOrderShow && <AddOrderModal data = {this.props.CustomerData} show={this.state.addOrderShow} handleClose={this.hideaddOrderModal}></AddOrderModal>}
+                {this.state.addOrderShow && <AddOrderModal id= {this.state.showOrderID} data = {this.props.CustomerData.find(x => x.ID === this.state.showOrderID).Orders} show={this.state.addOrderShow} handleClose={this.hideaddOrderModal}></AddOrderModal>}
 
                
 
