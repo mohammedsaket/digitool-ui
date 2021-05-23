@@ -63,15 +63,14 @@ class Login extends React.Component{
         
     const sectionStyle = {
       width: "100%",
-      height:"850px",
+      height:"1000px",
       marginTop:"0px",
       backgroundImage : "url(" + Background +")",
       backgroundPosition: 'center',
-      backgroundSize: 'cover',
+      backgroundSize: 'auto',
       display: "flex",
       justifyContent: "center",
-      alignItems: "center"
-      
+      alignItems: "center" 
     };
     const cardStyle={
       background:'white',
@@ -104,7 +103,8 @@ class Login extends React.Component{
       <div>
         {this.state.loading ? <div className="loader center">
       <i className="fa fa-cog fa-spin" />
-    </div> : <div style={sectionStyle}>
+    </div> : <div>
+    <div style={sectionStyle}>
             <Card style={cardStyle}>
             <Card.Body>
               <Card.Title style={cardTitleStyle}> DigiTool </Card.Title>
@@ -124,7 +124,7 @@ class Login extends React.Component{
               
               </Card.Body>
             </Card>
-      </div>}
+      </div></div>}
 
       </div>
       

@@ -3,6 +3,8 @@ import {Table} from "react-bootstrap"
 import AddClientModal from './AddClientModal'
 import UpdateClientModal from './UpdateClientModal'
 import DeleteClientModal from './DeleteClientModal'
+import ShowOrderModal from './ShowOrderModal'
+import AddOrderModal from './AddOrderModal'
 
 
 class CL extends React.Component {
@@ -14,9 +16,10 @@ class CL extends React.Component {
                     updateClientShow : false,
                     deleteClientShow : false,
                     addOrderShow : false,
-                    updateOrderShow : false,
+                    showOrderShow : false,
                     selectedClient: '',
-                    deleteClient:''
+                    deleteClient:'',
+                    showOrderID:''
                   };
 
       }
@@ -70,12 +73,12 @@ class CL extends React.Component {
         this.setState({ addOrderShow: false });
       };
 
-      showupdateOrderModal = () => {
-        this.setState({ updateOrderShow: true });
+      showshowOrderModal = (val) => {
+        this.setState({ showOrderShow: true,showOrderID:val});
       };
     
-      hideupdateOrderModal = () => {
-        this.setState({ updateOrderShow: false });
+      hideshowOrderModal = () => {
+        this.setState({ showOrderShow: false });
       };
 
       
@@ -96,11 +99,11 @@ class CL extends React.Component {
            
            <button className = "clAddOrderButton" 
                  
-                 onClick={()=>{}}>Add Order
+                 onClick={()=>{this.showaddOrderModal()}}>Add Order
                  </button>
             <button className = "clShowOrderButton" 
                  
-                 onClick={()=>{}}>Show Orders
+                 onClick={()=>{this.showshowOrderModal(val.ID)}}>Show Orders
                  </button>
                
            </div>
@@ -149,6 +152,9 @@ class CL extends React.Component {
                 <AddClientModal data = {this.props.CustomerData} show={this.state.addClientShow} handleClose={this.hideaddClientModal}></AddClientModal>
                 {this.state.updateClientShow &&<UpdateClientModal dataItem = {this.state.selectedClient} data = {this.props.CustomerData} show={this.state.updateClientShow} handleClose={this.hideupdateClientModal}></UpdateClientModal>}
                 {this.state.deleteClientShow && <DeleteClientModal id={this.state.deleteClient} show={this.state.deleteClientShow} handleClose={this.hidedeleteClientModal}></DeleteClientModal>}
+                {this.state.showOrderShow && <ShowOrderModal id= {this.state.showOrderID} show={this.state.showOrderShow}  data = {this.props.CustomerData.find(x => x.ID === this.state.showOrderID).Orders} handleClose={this.hideshowOrderModal}></ShowOrderModal>}
+                {this.state.addOrderShow && <AddOrderModal data = {this.props.CustomerData} show={this.state.addOrderShow} handleClose={this.hideaddOrderModal}></AddOrderModal>}
+
                
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 import axios from 'axios';
 
-class AddClientModal extends React.Component {
+class AddOrderModal extends React.Component {
 
     constructor(props) {
         super(props);
@@ -54,13 +54,13 @@ class AddClientModal extends React.Component {
             <div className={showHideClassName} >
                 <section className="modal-main">
                 <div className ="modalTitleDiv">
-                    <div className = "modalTitle">Add Client</div>
+                    <div className = "modalTitle">Add Order</div>
                 </div>
 
-                <div style={{height:'80%'}}>
+                <div style={{height:'80%',overflow:'auto',paddingTop:'5%'}}>
 
-                    <div style={{display:'flex',height:'20%'}}>
-                        <div className ="modalInputName">Name</div>
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Niche</div>
                         <div className ="modalInputdiv"> 
                         <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
                         value={this.state.name}
@@ -68,29 +68,38 @@ class AddClientModal extends React.Component {
                         </div>   
 
                     </div>
-                    <div style={{display:'flex',height:'20%'}}>
-                        <div className ="modalInputName">Phone Number</div>
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Website</div>
                         <div className ="modalInputdiv"> 
                         <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
                         value={this.state.phone_number}
                         onChange={(event)=>{this.setState({phone_number: event.target.value})}}></input></div>   
                     </div>
-                    <div style={{display:'flex',height:'20%'}}>
-                        <div className ="modalInputName">Email</div>
+                    
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Order date</div>
                         <div className ="modalInputdiv">
                             <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
                         value={this.state.email}
                         onChange={(event)=>{this.setState({email: event.target.value})}}></input></div>   
                     </div>
-                    <div style={{display:'flex',height:'20%'}}>
-                        <div className ="modalInputName">Source</div>
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">End Date</div>
                         <div className ="modalInputdiv"> 
                         <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
                         value={this.state.source}
                         onChange={(event)=>{this.setState({source: event.target.value})}}></input></div>   
                     </div>
-                    <div style={{display:'flex',height:'20%'}}>
-                        <div className ="modalInputName">Added By</div>
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Payment Method</div>
+                        <div className ="modalInputdiv">
+                             <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
+                        value={this.state.added_by}
+                        onChange={(event)=>{this.setState({added_by: event.target.value})}}></input></div>   
+                    </div>
+
+                    <div style={{display:'flex',height:'15%'}}>
+                        <div className ="modalInputName">Amount</div>
                         <div className ="modalInputdiv">
                              <input style={{fontSize:'16px',padding:'5px',width:'60%'}}
                         value={this.state.added_by}
@@ -118,4 +127,4 @@ class AddClientModal extends React.Component {
     }
 }
 
-export default AddClientModal;
+export default AddOrderModal;
