@@ -12,57 +12,24 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+### Sample Screenshots - 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+LoginPage![image](https://user-images.githubusercontent.com/32436479/119716498-cf6d3a00-be82-11eb-952e-a6e8011c0fa6.png)
 
-### `npm run build`
+HomePage![image](https://user-images.githubusercontent.com/32436479/119716420-be242d80-be82-11eb-8f63-f0ee75a2a8e4.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+AidPage![image](https://user-images.githubusercontent.com/32436479/119716541-d85e0b80-be82-11eb-920b-8b218098f1bf.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+CLPage![image](https://user-images.githubusercontent.com/32436479/119716523-d4ca8480-be82-11eb-8ce8-40e3aba0b5ca.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+OrderListModal![image](https://user-images.githubusercontent.com/32436479/119716554-dbf19280-be82-11eb-8161-f26b2b159418.png)
 
-### `npm run eject`
+AddClientModal![image](https://user-images.githubusercontent.com/32436479/119716619-ea3fae80-be82-11eb-858c-47a551fbfd30.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+UpdateClientModal![image](https://user-images.githubusercontent.com/32436479/119716593-e2800a00-be82-11eb-9f35-f4bf015ef31c.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+AddOrderModal![image](https://user-images.githubusercontent.com/32436479/119716571-deec8300-be82-11eb-84e7-829b9505115e.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+UpdateOrderModal![image](https://user-images.githubusercontent.com/32436479/119716605-e4e26400-be82-11eb-8df2-e3f16ca695a4.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
