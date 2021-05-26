@@ -1,8 +1,6 @@
 import React from 'react';
-import {Button,Table} from "react-bootstrap"
 import ReactTable from "react-table-6";  
 import "react-table-6/react-table.css"  
-import axios from 'axios';
 
 class Aid extends React.Component {
     constructor(props) {
@@ -20,7 +18,7 @@ class Aid extends React.Component {
         this.setState({search: event.target.value});
       }
       componentDidMount () {
-        this.props.updatelistData();
+        //this.props.updatelistData();
       }
       
       onFilteredChangeCustom = (value, accessor) => {
@@ -181,7 +179,7 @@ class Aid extends React.Component {
 
         return(
             <div>
-           {this.props.listData.length ==0 ?<div className="loader center">
+           {this.props.listData.length ===0 ?<div className="loader center">
       <i className="fa fa-cog fa-spin" />
     </div> : <div>
                 
@@ -189,8 +187,8 @@ class Aid extends React.Component {
               <ReactTable  
                   data={this.props.listData}  
                   columns={columns}  
-                  defaultPageSize = {20}  
-                  pageSizeOptions = {[20,50, 100]}  
+                  defaultPageSize = {18}  
+                  pageSizeOptions = {[18,50, 100]}  
                   
         //         filtered={this.state.filtered}
         //         onFilteredChange={(filtered, column, value) => {

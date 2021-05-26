@@ -21,7 +21,7 @@ class UpdateOrderModal extends React.Component {
       handleSubmit = ()=> {
         var l = this.props.data.ID;
         var list1 = this.props.dataList.filter(function (val) {
-            return val.ID != l;
+            return val.ID !== l;
           });
         const payload = { 
                     "ID":this.props.data.ID,
@@ -71,7 +71,7 @@ class UpdateOrderModal extends React.Component {
             <div className={showHideClassName} >
                 <section className="modal-main">
                 <div className ="modalTitleDiv">
-                    <div className = "modalTitle">Update Client</div>
+                    <div className = "modalTitle">Update Order</div>
                 </div>
 
                 <div style={{height:'80%',overflow:'auto'}}>

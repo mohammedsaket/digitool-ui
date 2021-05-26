@@ -13,8 +13,15 @@ class App extends React.Component {
                 login : false,
                 activeTab : sessionStorage.getItem('activeTab') ? sessionStorage.getItem('activeTab')  : 'home',
                 listData : [],
-                CustomerData:[]
+                CustomerData:[],
+                chartData : []
               };
+  }
+
+  componentDidMount(){
+    this.getWebsiteData();
+    this.updatelistData();
+    this.updateCustomerData();
   }
 
   handleLogin=(val)=>{
@@ -71,18 +78,36 @@ class App extends React.Component {
       }.bind(this)
   );
   }
+
+  getWebsiteData = () =>{
+    axios({
+      method: "GET",
+      url: "https://digimastertool.herokuapp.com/WebsiteData",
+     
+  }).then(function(response) {
+     this.setState({chartData:response.data})
+      
+     
+  }.bind(this)).catch(
+      function(error) {
+          
+          alert("Invalid Website Data Format")
+          
+      }.bind(this)
+  );
+  }
   
   render(){
-  
+    console.log("Saket2",this.state)
     return(
       <div>
       {(this.state.login || sessionStorage.getItem('loginVal') == "Done") ? 
       <div>
         <Nav handleActiveTab={this.handleActiveTab}></Nav> 
       {this.state.activeTab=='home'? 
-      <Home></Home> : (this.state.activeTab=='aid'? 
-      <Aid updatelistData = {this.updatelistData} listData = {this.state.listData}></Aid> : 
-      <CL updateCustomerData = {this.updateCustomerData} CustomerData = {this.state.CustomerData}></CL>)}
+      <Home chartData = {this.state.chartData}></Home> : (this.state.activeTab=='aid'? 
+      <Aid listData = {this.state.listData}></Aid> : 
+      <CL CustomerData = {this.state.CustomerData}></CL>)}
 
       </div>
 

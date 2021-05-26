@@ -63,7 +63,7 @@ class Login extends React.Component{
         
     const sectionStyle = {
       width: "100%",
-      height:"1000px",
+      height:"825px",
       marginTop:"0px",
       backgroundImage : "url(" + Background +")",
       backgroundPosition: 'center',

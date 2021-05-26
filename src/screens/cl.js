@@ -1,5 +1,4 @@
 import React from 'react';
-import {Table} from "react-bootstrap"
 import AddClientModal from './AddClientModal'
 import UpdateClientModal from './UpdateClientModal'
 import DeleteClientModal from './DeleteClientModal'
@@ -25,7 +24,7 @@ class CL extends React.Component {
       }
 
       componentDidMount () {
-        this.props.updateCustomerData();
+        //this.props.updateCustomerData();
       }
 
       handleSearch = (event) => {
@@ -84,7 +83,6 @@ class CL extends React.Component {
       
       
     render(){
-    const sn = 1;
        const listDiv = this.props.CustomerData.map((val)=>
        <div key = {val.ID} className = "listDiv">
            

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css'
-import axios from 'axios';
 import UpdateOrderModal from './UpdateOrderModal';
 
 class ShowOrderModal extends React.Component {
@@ -25,7 +24,6 @@ class ShowOrderModal extends React.Component {
       };
     render(){
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
-        var heading = ['Niche', 'Order date','End Date','Website','P.A','T.A','Payment Status','Payment Amount','Status'];
         var body =this.props.data;
 
         const todoDiv = <div style={{backgroundColor:'red',borderRadius:'15px',fontSize:'13px',padding:'5px 10px'}}>To Do</div>
